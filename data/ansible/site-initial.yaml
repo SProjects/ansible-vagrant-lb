@@ -1,0 +1,30 @@
+---
+## Datacenter
+- hosts: datacenter
+  become: yes
+  become_user: root
+  tasks:
+    - name: "Install system updates"
+      apt: 
+        update_cache: yes
+
+## Load balancer setup
+- hosts: loadbalancer
+  roles:
+    - loadbalancer
+  become: yes
+  become_user: root
+
+## Blue deploy
+- hosts: blue
+  roles:
+    - blue
+  become: yes
+  become_user: root
+
+## Green deploy
+- hosts: green
+  roles:
+    - green
+  become: yes
+  become_user: root

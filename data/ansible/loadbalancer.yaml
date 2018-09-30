@@ -1,0 +1,8 @@
+---
+## Load balancer setup
+- hosts: loadbalancer
+  roles:
+    - { role: loadbalancer }
+  become: yes
+  become_user: root
+  gather_facts: no

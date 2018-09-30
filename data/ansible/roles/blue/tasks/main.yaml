@@ -1,0 +1,27 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Disable nginx default site
+  file: 
+    path: /etc/nginx/sites-enabled/default 
+    state: absent
+  notify:
+    - Nginx Restart
+
+- name: Configure Nginx
+  template: src=website.j2 dest=/etc/nginx/sites-available/website
+
+- name: Add website to site-enabled
+  file:
+    path: /etc/nginx/sites-enabled/website
+    src: /etc/nginx/sites-available/website
+    state: link
+    force: yes
+  notify:
+    - Nginx Restart
+
+- name: Copy index file to correct location
+  template: src=index.html.j2 dest=/var/www/html/index.html

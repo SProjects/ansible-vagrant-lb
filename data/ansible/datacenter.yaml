@@ -1,0 +1,10 @@
+---
+## Datacenter
+- hosts: datacenter
+  become: yes
+  become_user: root
+  gather_facts: no
+  tasks:
+    - name: "Install system updates"
+      apt: 
+        update_cache: yes

@@ -1,0 +1,8 @@
+---
+## Blue deploy
+- hosts: blue
+  roles:
+    - { role: blue }
+  become: yes
+  become_user: root
+  gather_facts: no

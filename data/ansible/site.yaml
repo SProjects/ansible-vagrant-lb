@@ -1,0 +1,5 @@
+---
+- import_playbook: datacenter.yaml
+- import_playbook: loadbalancer.yaml
+- import_playbook: blue.yaml
+- import_playbook: green.yaml
